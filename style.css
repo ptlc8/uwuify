@@ -1,0 +1,67 @@
+body {
+	margin: 0;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+header {
+	background: pink;
+}
+header .icon {
+	height: 4em;
+	margin: .5em;
+	border-radius: .5em;
+	vertical-align: middle;
+}
+header h1 {
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0.5em;
+}
+
+button {
+	display: block;
+	margin: auto;
+	border: 0;
+	padding: 1em 5em;
+	font-size: 1.2em;
+	background: pink;
+	border-radius: .5em;
+	position: relative;
+}
+
+button:before {
+    content: "";
+    position: absolute;
+    right: -1em;
+    bottom: 60%;
+    width: 5em;
+    height: 5em;
+    background: no-repeat bottom url(assets/uwu-ptitard.png);
+    background-size: contain;
+}
+
+#loading {
+	display: block;
+	margin: .5em;
+}
+#loading:before {
+	content: "";
+	animation: loading infinite .25s;
+}
+@keyframes loading {
+	0% {
+		content: "⋰ "
+	}
+	25% {
+		content: "⋯ "
+	}
+	50% {
+		content: "⋱ "
+	}
+	75% {
+		content: "⋮ "
+	}
+	100% {
+		content: "⋰ "
+	}
+}
