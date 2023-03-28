@@ -18,17 +18,24 @@ header h1 {
 	margin: 0.5em;
 }
 
+#image {
+	display: block;
+	margin: 1em auto 0;
+	max-width: 60;
+	max-height: 75vh;
+}
+
 button {
 	display: block;
-	margin: auto;
+	margin: 1em auto 0;
 	border: 0;
 	padding: 1em 5em;
 	font-size: 1.2em;
 	background: pink;
 	border-radius: .5em;
+	cursor: pointer;
 	position: relative;
 }
-
 button:before {
     content: "";
     position: absolute;

@@ -16,7 +16,7 @@
 		</header>
 		<main>
 			<span id="loading">En attente de chargement</span>
-			<canvas id="image" style="width:50%;margin:auto;display:block;"></canvas>
+			<canvas id="image"></canvas>
 			<input id="file" type=file accept="image/*" style="display:none" onchange="loadAndUwUify(this.files[0])" />
 			<button onclick="document.getElementById('file').click()">Charger une image</button>
 			<script>
@@ -24,7 +24,7 @@
 			
 			function loadAndUwUify(file) {
 				UwUify.loadImageFile(file, document.getElementById("image"))
-				.then(() => UwUify.uwuify(document.getElementById("image")));
+				.then(() => UwUify.uwuify(document.getElementById("image"), location.href.includes("debug")));
 			}
 			
 			document.addEventListener("dragover", event => {
