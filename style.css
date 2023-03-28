@@ -43,7 +43,7 @@ button:before {
     bottom: 60%;
     width: 5em;
     height: 5em;
-    background: no-repeat bottom url(assets/uwu-ptitard.png);
+    background: no-repeat bottom url('assets/uwu-ptitard.png');
     background-size: contain;
 }
 
@@ -71,4 +71,27 @@ button:before {
 	100% {
 		content: "⋰ "
 	}
+}
+
+#items {
+	display: flex;
+    background: pink;
+    margin-top: 1em;
+    gap: 0.5em;
+    padding: 1em;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#items > .item {
+    width: 7em;
+    height: 7em;
+    padding: .5em;
+	background: no-repeat center white;
+    background-size: contain;
+    border-radius: 1em;
+    cursor: pointer;
+}
+#items > .item > input[type='checkbox'] {
+	width: 2em;
+	height: 2em;
 }

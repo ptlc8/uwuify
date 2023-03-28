@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="style.css" />
 		<script src="face-api.min.js"></script>
 		<script src="uwuify.js"></script>
+		<script src="https://ambi.dev/utils.js"></script>
 	</head>
 	<body>
 		<header>
@@ -19,12 +20,27 @@
 			<canvas id="image"></canvas>
 			<input id="file" type=file accept="image/*" style="display:none" onchange="loadAndUwUify(this.files[0])" />
 			<button onclick="document.getElementById('file').click()">Charger une image</button>
+			<div id="items"></div>
 			<script>
-			UwUify.load();
+			var selectedItems = UwUify.getRandomItems(3);
+			var originalFile = null;
+			
+			UwUify.load(progress => document.getElementById("loading").innerText = progress).then(() => {
+				var loadingIndicator = document.getElementById("loading");
+				loadingIndicator.parentElement.removeChild(loadingIndicator);
+			});
 			
 			function loadAndUwUify(file) {
 				UwUify.loadImageFile(file, document.getElementById("image"))
-				.then(() => UwUify.uwuify(document.getElementById("image"), location.href.includes("debug")));
+				.then(() => {
+					originalFile = file;
+					UwUify.uwuify(document.getElementById("image"), { debug: location.href.includes("debug"), selectedItems: selectedItems });
+				});
+			}
+			
+			function refresh() {
+				if (!originalFile) return;
+				loadAndUwUify(originalFile);
 			}
 			
 			document.addEventListener("dragover", event => {
@@ -35,6 +51,20 @@
 				event.preventDefault();
 				loadAndUwUify(event.dataTransfer.files[0]);
 			});
+			
+			var itemsDiv = document.getElementById("items");
+			for (let i = 0; i < UwUify.items.length; i++) {
+				let item = UwUify.items[i];
+				itemsDiv.appendChild(createElement("label", {className:"item", style:{backgroundImage:"url('"+item.asset+"')"}}, [
+					createElement("input", {type:"checkbox", checked:selectedItems.includes(i)}, [], {change: event => {
+						if (event.target.checked)
+							selectedItems.push(i);
+						else
+							selectedItems = selectedItems.filter(el => el != i);
+						refresh();
+					}})
+				]));
+			}
 			</script>
 		</main>
 	</body>
