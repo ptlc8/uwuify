@@ -2,6 +2,8 @@
 
 UwUify est est modificateur de photos : il les rend plus UwU.
 
+![Capture d'écran](screenshot.jpg)
+
 Disponible à l'adresse [ambi.dev/uwuify](https://ambi.dev/uwuify). La branche master y est auto-déployer à chaque push.
 
 ## Dépendences
